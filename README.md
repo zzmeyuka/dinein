@@ -1,12 +1,11 @@
 # dinein
-Dinein: Restaurant Order Management System
-A NoSQL-based restaurant order management system built with MongoDB, designed for flexibility, scalability, and real-time operations.
+## Project Overview
+Dine-In is a restaurant management application that allows users to place orders, view menu items, and manage their profiles. The application features user authentication, role-based access control, and a modular structure for easy maintenance and scalability.
+
 Features
 
 Real-time order management and tracking
 Dynamic menu management with instant updates
-Customer profile and preference tracking
-Advanced analytics and reporting
 Role-based access control
 Secure JWT authentication
 Responsive dashboard interface
@@ -41,20 +40,6 @@ Order tracking system
 Multiple status stages (new, preparing, ready)
 Order history tracking
 
-Customer Management
-
-Customer profiles
-Order history
-Preference tracking
-Personalized recommendations
-
-Analytics
-
-Real-time sales reports
-Customer behavior analysis
-Popular item tracking
-Peak hour analysis
-
 Security Features
 
 JWT-based authentication
@@ -70,63 +55,70 @@ Horizontal scaling through sharding
 Efficient query optimization
 Real-time data processing
 
-Installation
+## Setup Instructions
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd dinein
+   ```
 
-Clone the repository
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-bashCopygit clone https://github.com/yourusername/dinein.git
+3. **Set up environment variables**:
+   Create a `.env` file in the root directory and add the following:
+   ```
+   MONGO_URI=mongodb+srv://uldanarahmetova:eklfyf06@cluster0.69h7b.mongodb.net/dine-in?authSource=admin
+   DB_NAME=dine-in
+   JWT_SECRET=your-secret-key
+   PORT=5000
 
-Install dependencies
+   ```
 
-bashCopycd dinein
-npm install
+4. **Run the application**:
+   ```bash
+   npm start
+   ```
 
-Set up environment variables
+## API Documentation
 
-bashCopycp .env.example .env
-# Edit .env with your MongoDB URI and JWT secret
+### Authentication Endpoints
+- **POST /api/users/register**
+  - Registers a new user with encrypted passwords.
+  
+- **POST /api/users/login**
+  - Authenticates users and returns a JWT.
 
-Start the server
+### Menu Management Endpoints
+- **GET /api/menu**
+  - Retrieve menu items
+- **POST /api/menu**
+  - Add new menu item (admin only)
+- **DELETE /api/menu**
+  - Remove menu item (admin only)
 
-bashCopynpm start
-API Endpoints
-Menu Routes
+### Order Management Endpoints
+- **GET /api/orders**
+  - Retrieves all orders (admin only).
 
-GET /menu - Retrieve menu items
-POST /menu - Add new menu item (admin only)
-PATCH /menu/:id - Update menu item (admin only)
-DELETE /menu/:id - Remove menu item (admin only)
+- **GET /api/orders/my-orders**
+  - Retrieves orders for the logged-in user.
 
-Order Routes
+- **POST /api/orders**
+  - Creates a new order for the logged-in user.
 
-GET /orders - Retrieve all orders (admin only)
-POST /orders - Place new order
-PATCH /orders/:id - Update order status (admin only)
-DELETE /orders/:id - Remove order (admin only)
+- **PATCH /api/orders/:id/status**
+  - Updates the status of an order (admin only).
 
-User Routes
-
-POST /auth/register - Register new user
-POST /auth/login - User login
-GET /users/profile - Get user profile
-
-Contributing
-
-Fork the repository
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a Pull Request
 
 Team
 
-Kuvanich Zhansaya
 Rakhmetova Uldana
+Adilzhan Medetbekuly
+Gulnaz Abzhapparova
 
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-Acknowledgments
 
 MongoDB documentation and community
-Express.js documentation
-Various open-source contributors
+Node.js and Express.js documentation
